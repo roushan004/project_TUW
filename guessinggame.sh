@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # File: guessinggame.sh
 function check {
-	echo "You seem to be the owner of this computer. OKAY!"
-	echo -n "Tell me the total number of files in your current directory. Remember hidden files are also included in total number of files in your current directory."
+	echo "Let's start the game. OKAY!"
+	echo -n "Tell me the total number of files in your current directory. Exclude those hidden ones:"
 	 
 	while [[ true ]]
 	do
 		read res
-		con=$(ls -la | wc -l)
+		con=$(expr $(ls -l | wc -l) - 1)
 		if [[ res -eq con ]]
 		then
 			echo "AMAZING!!CONGRATULATIONS!!"
@@ -18,7 +18,7 @@ function check {
 				dif=$(expr $res-$con )
 				if [[ dif -lt 5 ]]
 				then
-					echo -n "OH!!! That's close. Try again:"
+					echo -n "OH!!! That's close. Aim for lower. Try again:"
 				else
 					 echo -n "TOO HIGH.Try again:"
 				 fi
@@ -26,7 +26,7 @@ function check {
 				dif=$(expr $con-$res)
 				if [[ dif -lt 5 ]]
 				then
-					echo -n "OH!!!! That's close. Try again:"
+					echo -n "OH!!!! That's close. Aim for higher. Try again:"
 				else
 					echo -n "TOO LOW.Try again:"
 				fi
@@ -34,4 +34,4 @@ function check {
 		fi
       	done
 }
-check
+check 2>> errors.txt
