@@ -1,5 +1,5 @@
 README.md:
-	echo "#Project_TUW" >README.md
+	echo "# Project_TUW" >README.md
 	echo "" >>README.md
 	echo "***TITLE: Bash, Make, Git and Github Assignment***" >>README.md
 	echo ""	>>README.md
